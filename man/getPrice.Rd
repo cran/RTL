@@ -35,6 +35,7 @@ You need your own credentials with Morningstar. In examples sourced locally.
 \itemize{
   \item CME_CbotFuturesEOD and CME_CbotFuturesEOD_continuous
   \item CME_NymexFutures_EOD and CME_NymexFutures_EOD_continuous
+  \item CME_NymexOptions_EOD
   \item CME_CmeFutures_EOD and CME_CmeFutures_EOD_continuous
   \item ICE_EuroFutures and ICE_EuroFutures_continuous
   \item ICE_NybotCoffeeSugarCocoaFutures and ICE_NybotCoffeeSugarCocoaFutures_continuous
@@ -50,6 +51,8 @@ getPrice(feed="CME_NymexFutures_EOD",contract="CL9Z",
 from="2019-08-26",iuser = usernam, ipassword = password)
 getPrice(feed="CME_NymexFutures_EOD_continuous",contract="CL_006_Month",
 from="2019-08-26",iuser = username, ipassword = password)
+getPrice(feed="CME_NymexOptions_EOD",contract="LO0M2500",
+from="2020-03-15",iuser = usernam, ipassword = password)
 getPrice(feed="CME_CbotFuturesEOD",contract="C9Z",
 from="2019-08-26",iuser = username, ipassword = password)
 getPrice(feed="CME_CbotFuturesEOD_continuous",contract="ZB_001_Month",

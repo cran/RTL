@@ -4,11 +4,13 @@
 \name{holidaysOil}
 \alias{holidaysOil}
 \title{holidaysOil}
-\format{data frame}
+\format{
+data frame
+}
 \usage{
 holidaysOil
 }
 \description{
-THoliday calendars for NYMEX and ICE Brent
+Holiday calendars for NYMEX and ICE Brent
 }
 \keyword{datasets}

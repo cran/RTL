@@ -2,8 +2,6 @@
 
 + Purposely designed functions for trading, trading analytics and risk practitioners in in Commodities and Finance. 
 + Build to support delivery of Finance classes from one of the co-authors of RTL at the [Alberta School of Business](https://www.ualberta.ca/business).
-+ Data set for an upcoming accompanying book **Practical Data Science for Trading Risk Management
-Professionals** for 2020 publication by [Risk Books](https://riskbooks.com/).
 
 ## Features
 
@@ -14,6 +12,7 @@ Professionals** for 2020 publication by [Risk Books](https://riskbooks.com/).
 
   + ICE_EuroFutures and ICE_EuroFutures_continuous.
   + CME_NymexFutures_EOD and CME_NymexFutures_EOD_continuous.
+  + CME_NymexOptions_EOD.
   + CME_CbotFuturesEOD and CME_CbotFuturesEOD_continuous.
   + CME_CmeFutures_EOD and CME_CmeFutures_EOD_continuous.
   + CME_STLCPC_Futures.
@@ -30,10 +29,16 @@ Accessible via `data(datsetname)`
 + `holidaysOil`: Holiday calendars for ICE and NYMEX.
 + `tickers_eia`: Mapping of EIA tickers to crude and refined products markets for building supply demand balances.
 + `usSwapIRDef`: Data frame of definitions for instruments to build a curve for use with `RQuantlib`. Use `getIRswapCurve()` to extract the latest data from `FRED` and `Morningstar`.
-+ `usSwapIR`: Toy data set output of `getIRswapCurve`.
-+ `usSwapCurves`: Toy data set output of `RQuantlib::DiscountCurve()`.
++ `usSwapIR`: Sample data set output of `getIRswapCurve`.
++ `usSwapCurves`: Sample data set output of `RQuantlib::DiscountCurve()`.
++ `cancrudeassays` contains historical Canadian crude assays by batch from [Crudemonitor](https://crudemonitor.ca/home.php). `cancrudeassayssum` is a summarised average assays version.
++ `crudeassaysXOM` for all publicly available complete assays in Excel format from [ExxonMobil](https://corporate.exxonmobil.com/Crude-oils/Crude-trading/Crude-oil-blends-by-API-gravity-and-by-sulfur-content#APIgravity)
++ `crudeassaysBP` for all publicly available complete assays in Excel format from [BP](https://www.bp.com/en/global/bp-global-energy-trading/features-and-updates/technical-downloads/crudes-assays.html)
++ `eiaStocks`: Sample data set of EIA.gov stocks for key commodiities.
++ `eiaStorageCap`: EIA crude storage capacity by PADD.
++ `dflong` and `dfwide` contain continuous futures prices sample data sets for Nymex (CL, HO, RB and NG contracts) and ICE Brent.
++ `crudepipelines` and `refineries` contain GIS information in the North American crude space. 
 + `twtrump` and `twoott` are historical tweets toy data sets from @realDonaldTrump and #OOTT for learning NLP.
-+ `cancrudeassays` contains historical Canadian crude assays from [Crudemonitor](https://crudemonitor.ca/home.php) as a learning and testing data set.
 
 ## Python
 
@@ -41,11 +46,11 @@ A python wrapper for some functions is available at https://github.com/bbcho/pyR
 
 ## Installation
 
-library(devtools)
+**Latest Package**
+`devtools::install_github("risktoollib/RTL")`
 
-devtools::install_github("risktoollib/RTL")
-
-library(RTL)
+**CRAN Stable**
+`install.packages("RTL")`
 
 ## Credentials
 
