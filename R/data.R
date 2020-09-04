@@ -70,41 +70,45 @@
 "cancrudeprices"
 
 #' crudepipelines
-#' @description Sample GIS data set for North American crude pipelines.
+#' @description GIS data set for North American crude pipelines.
 #' @format data frame
+#' @source \url{https://www.eia.gov/maps/layer_info-m.php}
 "crudepipelines"
 
 #' refineries
-#' @description Sample GIS data set for North American refineries.
+#' @description GIS data set for North American refineries.
 #' @format data frame
+#' @source \url{https://www.eia.gov/maps/layer_info-m.php}
 "refineries"
 
-#' twtrump
-#' @description NLP toy data set of OOTT tweet.
+#' productspipelines
+#' @description GIS data set for North American products pipelines.
 #' @format data frame
-"twtrump"
+#' @source \url{https://www.eia.gov/maps/layer_info-m.php}
+"productspipelines"
 
-#' twoott
-#' @description NLP toy data set of Trump tweet.
+#' productsterminals
+#' @description GIS data set for North American products pipelines.
 #' @format data frame
-"twoott"
+#' @source \url{https://www.eia.gov/maps/layer_info-m.php}
+"productsterminals"
 
 #' df_fut
 #' @description Futures settlement data set.
 #' @format data frame
-#' #' @source \url{http://www.morningstarcommodity.com}
+#' #' @source \url{https://www.morningstar.com/products/commodities-and-energy}
 "df_fut"
 
 #' dflong
 #' @description Futures settlement data set.
 #' @format data frame
-#' #' @source \url{http://www.morningstarcommodity.com}
+#' #' @source \url{https://www.morningstar.com/products/commodities-and-energy}
 "dflong"
 
 #' dfwide
 #' @description Futures settlement data set.
 #' @format data frame
-#' #' @source \url{http://www.morningstarcommodity.com}
+#' #' @source \url{https://www.morningstar.com/products/commodities-and-energy}
 "dfwide"
 
 #' usSwapIR
@@ -134,3 +138,23 @@
 #' @description Crude Trading Trade Cycles
 #' @format data frame
 "tradeCycle"
+
+#' fizdiffs
+#' @description Randomized data set for education purpose of selected physical crude differentials to WTI.
+#' @format data frame
+"fizdiffs"
+
+#' ref.opt.inputs
+#' @description Simple refinery input to be used in running LP modeling for education purposes.
+#' @format data frame
+"ref.opt.inputs"
+
+#' ref.opt.ouputs
+#' @description Simple refinery outputs and constraints to be used in running LP modeling for education purposes.
+#' @format data frame
+"ref.opt.outputs"
+
+#' tradeprocess
+#' @description Data set for explaning the various ways to monetize a market view.
+#' @format data frame
+"tradeprocess"

@@ -1,14 +1,14 @@
 ## Purpose
 
-+ Purposely designed functions for trading, trading analytics and risk practitioners in in Commodities and Finance. 
-+ Build to support delivery of Finance classes from one of the co-authors of RTL at the [Alberta School of Business](https://www.ualberta.ca/business).
++ Purposely designed functions for trading, trading analytics and risk practitioners in Commodities and Finance. 
++ Build to support delivery of Finance classes from one of the co-authors of RTL at the [Alberta School of Business](https://www.ualberta.ca/business/index.html).
 
 ## Features
 
 + Historical forward curves charting.
 + Calendars and expiry dates data objects for a wide range of commodity futures contracts.
 + Function to adjust continuous contracts returns for roll adjustments using expiries above.
-+ [Morningstar Marketplace API](https://mp.morningstarcommodity.com/marketplace/) functions `getPrice()` and `getPrices()` using your own Morningstar credentials. Current feeds included:
++ [Morningstar Marketplace API](https://mp.morningstarcommodity.com/marketplace/) functions `getPrice()`, `getPrices()` and `getCurve()` using your own Morningstar credentials. Current feeds included:
 
   + ICE_EuroFutures and ICE_EuroFutures_continuous.
   + CME_NymexFutures_EOD and CME_NymexFutures_EOD_continuous.
@@ -20,6 +20,10 @@
   + Morningstar_FX_Forwards.
   + ... see `?getPrice` for up to date selection and examples.
 + `chart_zscore()` supports seasonality adjusted analysis of residuals, particularly useful when dealing with commodity stocks and/or days demand time series with trends as well as non-constant variance across seasonal periods.
++ `chart_eia_steo()` and `chart_eia_sd()` return either a chart or dataframe of supply demand balances from the EIA.
++ `swapInfo()` returns all information required to price first line futures contract averaging swap or CMA physical trade, including a current month instrument with prior settlements. 
++ ... Check the functions index and send feedback to `pcote@ualberta.ca`. We welcome feedback, suggestions and collaborators.
+
 
 ## Data Sets
 
@@ -38,11 +42,10 @@ Accessible via `data(datsetname)`
 + `eiaStorageCap`: EIA crude storage capacity by PADD.
 + `dflong` and `dfwide` contain continuous futures prices sample data sets for Nymex (CL, HO, RB and NG contracts) and ICE Brent.
 + `crudepipelines` and `refineries` contain GIS information in the North American crude space. 
-+ `twtrump` and `twoott` are historical tweets toy data sets from @realDonaldTrump and #OOTT for learning NLP.
 
 ## Python
 
-A python wrapper for some functions is available at https://github.com/bbcho/pyRTL
+A python version of RTL for most functions is available at https://pypi.org/project/risktools/.
 
 ## Installation
 

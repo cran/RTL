@@ -119,7 +119,7 @@ getPrice <- function(feed="CME_NymexFutures_EOD",contract="CL9Z",from="2019-01-0
 #' from="2019-08-26",iuser = username, ipassword = password)
 #' }
 
-getPrices <- function(feed="CME_NymexFutures_EOD",contracts=c("CL9Z","CL0F","CL0M"),from="2019-01-01",iuser = "x@xyz.com", ipassword = "pass") {
+getPrices <- function(feed = "CME_NymexFutures_EOD",contracts = c("CL9Z","CL0F","CL0M"),from = "2019-01-01",iuser = "x@xyz.com", ipassword = "pass") {
 
   x <- getPrice(feed=feed,contract=contracts[1],from=from,iuser = iuser, ipassword = ipassword)
   for (c in contracts[-1]) {
@@ -166,3 +166,85 @@ getIRswapCurve <- function(currency="USD",from="2019-01-01",iuser = "x@xyz.com",
   colnames(r) <- c("date",dplyr::tibble(tickSource = colnames(r)[-1]) %>% dplyr::left_join(usSwapIR,by = c("tickSource")) %>% .$tickQL)
   return(r)
 }
+
+
+#' \code{getCurve}
+#' @description
+#' Returns forward curves from Morningstar API. See below for current feeds supported.
+#' You need your own credentials with Morningstar.
+#'
+#' @section Current Feeds Supported:
+#' \itemize{
+#'   \item Crb_Futures_Price_Volume_And_Open_Interest
+#'   \item CME_NymexFuturesIntraday_EOD
+#'   \item ICE_EuroFutures and ICE_EuroFutures_continuous
+#' }
+#'
+#' @param feed Morningstar Feed Table e.g "Crb_Futures_Price_Volume_And_Open_Interest".
+#' @param contract Morningstar contract root e.g. "CL" for CME WTI and "BG" for ICE Brent.
+#' @param date From date as character string.
+#' @param fields Defaults to c("Open, High, Low, Close").
+#' @param iuser Morningstar user name as character - sourced locally in examples.
+#' @param ipassword Morningstar user password as character - sourced locally in examples.
+#' @return wide data frame
+#' @export getCurve
+#' @author Philippe Cote
+#' @examples
+#' \dontrun{
+#' # CME WTI Futures
+#' getCurve(feed = "Crb_Futures_Price_Volume_And_Open_Interest",contract = "CL",
+#' date = "2020-07-13",fields = c("Open, High, Low, Close"),
+#' iuser = "x@xyz.com", ipassword = "pass")
+#'
+#' getCurve(feed = "Crb_Futures_Price_Volume_And_Open_Interest",contract = "BG",
+#' date = "2020-07-13",fields = c("Open, High, Low, Close"),
+#' iuser = "x@xyz.com", ipassword = "pass")
+#' }
+
+getCurve <- function(feed = "Crb_Futures_Price_Volume_And_Open_Interest",contract = "CL",date ="2020-08-10",
+                     fields = c("Open, High, Low, Close"),
+                     iuser = "x@xyz.com", ipassword = "pass") {
+
+  URL = httr::modify_url(url = "https://mp.morningstarcommodity.com",
+                         path = paste0("/lds/feeds/",feed, "/curve?root=",contract,"&cols=",gsub(" ","",fields),
+                                       "&date=",date))
+  es = RCurl::getURL(url = URL, userpw = paste(iuser,ipassword,sep=":"))
+  out <- jsonlite::fromJSON(es) %>% dplyr::as_tibble()
+  es <- out$keys %>% unlist() %>% unique() %>% sort()
+  out <- out %>%
+    dplyr::transmute(expirationDate = as.Date(expirationDate),
+                     type = col,
+                     value = as.numeric(value)) %>%
+    tidyr::pivot_wider(names_from = type, values_from = value) %>%
+    dplyr::arrange(expirationDate)
+
+  out <- out %>%
+    dplyr::mutate(contract = paste(contract, sprintf('%0.2d', 1:nrow(out)), sep = ""),
+                  code = es) %>%
+    dplyr::select(contract, code, dplyr::everything())
+
+  return(out)
+}
+
+#  getCurve(feed="Crb_Futures_Price_Volume_And_Open_Interest",contract="BG",date = "2020-07-10",
+ #           fields = c("Open, High, Low, Close"),
+  #          iuser = mstar[[1]], ipassword = mstar[[2]])
+
+# getCurve <- function(feed = "Crb_Futures_Price_Volume_And_Open_Interest",contract = "CL",date ="2020-07-13",
+#                      fields = c("Open, High, Low, Close"),
+#                      iuser = "x@xyz.com", ipassword = "pass") {
+#
+#   URL = httr::modify_url(url = "https://mp.morningstarcommodity.com",
+#                          path = paste0("/lds/feeds/",feed, "/curve?root=",contract,"&cols=",gsub(" ","",fields),
+#                                        "&date=",date))
+#   httr::handle_reset(URL)
+#   es <- httr::GET(url = URL,httr::authenticate(user = iuser,password = ipassword,type = "basic"))
+#   out <- es %>% httr::content()
+#   out <- tibble::tibble(purrr::map(out,"expirationDate") %>% unlist() %>% tibble::enframe(name = NULL, value = "expiry") %>% dplyr::transmute(expiry = as.Date(expiry)),
+#                         purrr::map(out,"col") %>% unlist() %>% tibble::enframe(name = NULL, value = "type"),
+#                         purrr::map(out,"value") %>% unlist() %>% tibble::enframe(name = NULL)) %>%
+#     dplyr::arrange(expiry) %>%
+#     tidyr::pivot_wider(names_from = type, values_from = value)
+#   return(out)
+# }
+
