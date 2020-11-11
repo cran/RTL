@@ -1,3 +1,24 @@
+# RTL 0.1.5
+
+## New
+
++ `chart_spreads()` to generate specific contract spreads across years e.g. ULSD March/April. Requires Morninstar credentials.
+
++ Morningstar feeds: 
+
+    + CME_Comex_FuturesSettlement_EOD and CME_Comex_FuturesSettlement_EOD_continuous.
+    + LME_AskBidPrices_Delayed.
+    + SHFE_FuturesSettlement_RT.
+    + EIA GIS data sets `ngpipelines`, `ngstorage`, `nghubs`, `lngterminals`.
+    
+## Updates and Fixes
+
++ `eia2tidy()` amended for quarterly and hourly data.
++ Morningstar tickers for `getPrice()` and `getPrices()` functions.
++ `promptBeta()` chart moved to `plotly`.
+
+## Removed
+
 # RTL 0.1.4
 
 ## New

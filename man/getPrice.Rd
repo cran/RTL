@@ -6,8 +6,8 @@
 \usage{
 getPrice(
   feed = "CME_NymexFutures_EOD",
-  contract = "CL9Z",
-  from = "2019-01-01",
+  contract = "@CL0Z",
+  from = "2020-09-01",
   iuser = "x@xyz.com",
   ipassword = "pass"
 )
@@ -37,6 +37,9 @@ You need your own credentials with Morningstar. In examples sourced locally.
   \item CME_NymexFutures_EOD and CME_NymexFutures_EOD_continuous
   \item CME_NymexOptions_EOD
   \item CME_CmeFutures_EOD and CME_CmeFutures_EOD_continuous
+  \item CME_Comex_FuturesSettlement_EOD and CME_Comex_FuturesSettlement_EOD_continuous
+  \item LME_AskBidPrices_Delayed
+  \item SHFE_FuturesSettlement_RT
   \item ICE_EuroFutures and ICE_EuroFutures_continuous
   \item ICE_NybotCoffeeSugarCocoaFutures and ICE_NybotCoffeeSugarCocoaFutures_continuous
   \item CME_STLCPC_Futures
@@ -47,13 +50,15 @@ You need your own credentials with Morningstar. In examples sourced locally.
 
 \examples{
 \dontrun{
-getPrice(feed="CME_NymexFutures_EOD",contract="CL9Z",
-from="2019-08-26",iuser = usernam, ipassword = password)
+getPrice(feed="CME_NymexFutures_EOD",contract="@CL0Z",
+from="2019-08-26",iuser = username, ipassword = password)
+getPrice(feed="CME_NymexFutures_EOD",contract="@CL21Z",
+from="2019-08-26",iuser = username, ipassword = password)
 getPrice(feed="CME_NymexFutures_EOD_continuous",contract="CL_006_Month",
 from="2019-08-26",iuser = username, ipassword = password)
-getPrice(feed="CME_NymexOptions_EOD",contract="LO0M2500",
-from="2020-03-15",iuser = usernam, ipassword = password)
-getPrice(feed="CME_CbotFuturesEOD",contract="C9Z",
+getPrice(feed="CME_NymexOptions_EOD",contract="@LO21ZP4000",
+from="2020-03-15",iuser = username, ipassword = password)
+getPrice(feed="CME_CbotFuturesEOD",contract="C0Z",
 from="2019-08-26",iuser = username, ipassword = password)
 getPrice(feed="CME_CbotFuturesEOD_continuous",contract="ZB_001_Month",
 from="2019-08-26",iuser = username, ipassword = password)
@@ -69,7 +74,7 @@ getPrice(feed="ICE_EuroFutures",contract="BRN0Z",
 from="2019-08-26",iuser = username, ipassword = password)
 getPrice(feed="ICE_EuroFutures_continuous",contract="BRN_001_Month",
 from="2019-08-26",iuser = username, ipassword = password)
-getPrice(feed="ICE_NybotCoffeeSugarCocoaFutures",contract="SB0H",
+getPrice(feed="ICE_NybotCoffeeSugarCocoaFutures",contract="SB21H",
 from="2019-08-26",iuser = username, ipassword = password)
 getPrice(feed="ICE_NybotCoffeeSugarCocoaFutures_continuous",contract="SF_001_Month",
 from="2019-08-26",iuser = username, ipassword = password)

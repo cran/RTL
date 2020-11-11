@@ -9,6 +9,9 @@
 #'   \item CME_NymexFutures_EOD and CME_NymexFutures_EOD_continuous
 #'   \item CME_NymexOptions_EOD
 #'   \item CME_CmeFutures_EOD and CME_CmeFutures_EOD_continuous
+#'   \item CME_Comex_FuturesSettlement_EOD and CME_Comex_FuturesSettlement_EOD_continuous
+#'   \item LME_AskBidPrices_Delayed
+#'   \item SHFE_FuturesSettlement_RT
 #'   \item ICE_EuroFutures and ICE_EuroFutures_continuous
 #'   \item ICE_NybotCoffeeSugarCocoaFutures and ICE_NybotCoffeeSugarCocoaFutures_continuous
 #'   \item CME_STLCPC_Futures
@@ -26,13 +29,15 @@
 #' @author Philippe Cote
 #' @examples
 #' \dontrun{
-#' getPrice(feed="CME_NymexFutures_EOD",contract="CL9Z",
-#' from="2019-08-26",iuser = usernam, ipassword = password)
+#' getPrice(feed="CME_NymexFutures_EOD",contract="@CL0Z",
+#' from="2019-08-26",iuser = username, ipassword = password)
+#' getPrice(feed="CME_NymexFutures_EOD",contract="@CL21Z",
+#' from="2019-08-26",iuser = username, ipassword = password)
 #' getPrice(feed="CME_NymexFutures_EOD_continuous",contract="CL_006_Month",
 #' from="2019-08-26",iuser = username, ipassword = password)
-#' getPrice(feed="CME_NymexOptions_EOD",contract="LO0M2500",
-#' from="2020-03-15",iuser = usernam, ipassword = password)
-#' getPrice(feed="CME_CbotFuturesEOD",contract="C9Z",
+#' getPrice(feed="CME_NymexOptions_EOD",contract="@LO21ZP4000",
+#' from="2020-03-15",iuser = username, ipassword = password)
+#' getPrice(feed="CME_CbotFuturesEOD",contract="C0Z",
 #' from="2019-08-26",iuser = username, ipassword = password)
 #' getPrice(feed="CME_CbotFuturesEOD_continuous",contract="ZB_001_Month",
 #' from="2019-08-26",iuser = username, ipassword = password)
@@ -48,18 +53,24 @@
 #' from="2019-08-26",iuser = username, ipassword = password)
 #' getPrice(feed="ICE_EuroFutures_continuous",contract="BRN_001_Month",
 #' from="2019-08-26",iuser = username, ipassword = password)
-#' getPrice(feed="ICE_NybotCoffeeSugarCocoaFutures",contract="SB0H",
+#' getPrice(feed="ICE_NybotCoffeeSugarCocoaFutures",contract="SB21H",
 #' from="2019-08-26",iuser = username, ipassword = password)
 #' getPrice(feed="ICE_NybotCoffeeSugarCocoaFutures_continuous",contract="SF_001_Month",
 #' from="2019-08-26",iuser = username, ipassword = password)
 #' }
 
-getPrice <- function(feed="CME_NymexFutures_EOD",contract="CL9Z",from="2019-01-01",iuser = "x@xyz.com", ipassword = "pass") {
-  #mpurl <- "https://mp.morningstarcommodity.com/lds/feeds/CME_NymexFutures_EOD/ts?Symbol=CL9Z"
+getPrice <- function(feed = "CME_NymexFutures_EOD",contract = "@CL0Z",
+                     from = "2020-09-01",iuser = "x@xyz.com", ipassword = "pass") {
+  #mpurl <- "https://mp.morningstarcommodity.com/lds/feeds/CME_NymexFutures_EOD/ts?Symbol=@CL9Z"
   userpw <- paste0(iuser,":",ipassword)
-  if (feed %in% c("CME_NymexFutures_EOD","CME_NymexOptions_EOD","CME_CbotFuturesEOD","CME_CmeFutures_EOD","ICE_EuroFutures","ICE_NybotCoffeeSugarCocoaFutures")) {
+  if (feed %in% c("CME_NymexFutures_EOD","CME_NymexOptions_EOD","CME_CbotFuturesEOD","CME_CmeFutures_EOD",
+                  "ICE_EuroFutures","ICE_NybotCoffeeSugarCocoaFutures",
+                  "CME_Comex_FuturesSettlement_EOD",
+                  "LME_AskBidPrices_Delayed", "SHFE_FuturesSettlement_RT")) {
     URL = httr::modify_url(url = "https://mp.morningstarcommodity.com",path = paste0("/lds/feeds/",feed, "/ts?","Symbol=",contract,"&fromDateTime=",from))}
-  if (feed %in% c("CME_NymexFutures_EOD_continuous","CME_CbotFuturesEOD_continuous","CME_CmeFutures_EOD_continuous","ICE_EuroFutures_continuous","ICE_NybotCoffeeSugarCocoaFutures_continuous")) {
+  if (feed %in% c("CME_NymexFutures_EOD_continuous","CME_CmeFutures_EOD_continuous",
+                  "ICE_EuroFutures_continuous","ICE_NybotCoffeeSugarCocoaFutures_continuous",
+                  "CME_Comex_FuturesSettlement_EOD_continuous","CME_CbotFuturesEOD_continuous")) {
     URL = httr::modify_url(url = "https://mp.morningstarcommodity.com",path = paste0("/lds/feeds/",feed, "/ts?","Contract=",contract,"&fromDateTime=",from))}
   if (feed %in% c("CME_STLCPC_Futures")) {URL = httr::modify_url(url = "https://mp.morningstarcommodity.com",path = paste0("/lds/feeds/",feed, "/ts?","product=",contract,"&fromDateTime=",from))}
   if (feed %in% c("CFTC_CommitmentsOfTradersCombined")) {
@@ -100,7 +111,6 @@ getPrice <- function(feed="CME_NymexFutures_EOD",contract="CL9Z",from="2019-01-0
   return(out)
 }
 
-
 #' \code{getPrices}
 #' @description
 #' Multiple Morningstar API calls using getPrice functions.
@@ -115,8 +125,8 @@ getPrice <- function(feed="CME_NymexFutures_EOD",contract="CL9Z",from="2019-01-0
 #' @author Philippe Cote
 #' @examples
 #' \dontrun{
-#' getPrices(feed="CME_NymexFutures_EOD",contracts=c("CL9Z","CL0F","CL0M"),
-#' from="2019-08-26",iuser = username, ipassword = password)
+#' getPrices(feed = "CME_NymexFutures_EOD",contracts = c("@CL0Z","@CL1F","@CL21H","@CL21Z"),
+#' from = "2020-01-01",iuser = username, ipassword = password)
 #' }
 
 getPrices <- function(feed = "CME_NymexFutures_EOD",contracts = c("CL9Z","CL0F","CL0M"),from = "2019-01-01",iuser = "x@xyz.com", ipassword = "pass") {
