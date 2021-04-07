@@ -1,3 +1,25 @@
+# RTL 0.1.6
+
+## New
+
++ Genscpae API interface added for `getGenscapeStorageOil()` and `getGenscapePipeOil()`.
++ Added the following feeds to Morningstar API function `getPrice()`:
+    + `ERCOT_LmpsByResourceNodeAndElectricalBus`
+    + `PJM_Rt_Hourly_Lmp`
+    + Send email to pcote@ualberta.ca if you wish to add more feeds.
+
+## Updates and Fixes
+
++ `chart_spreads` conversion armument now a vector allowing for different conversion e.g. crack spreads.
++ Updated `cancrudeassays` dataset. Removed AHS, WCB and SYN grades.
++ `chart_zscore()` amended. Output `stats` returns statistical tests and `res` fitted results.
++ `promptBeta()` removed output `stats`. 
++ Updated `usSwapIR`, `usSwapCurves` with rates as of `2020-12-31`.
++ `tradeCycle` table updated for Canadian crude oil 2021 calendar. Source: COLC.
++ `getPrice` fixed to return Settle instead of Open when `feed=CME_NymexOptions_EOD`.
+
+## Removed
+
 # RTL 0.1.5
 
 ## New

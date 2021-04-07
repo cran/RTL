@@ -6,7 +6,7 @@
 \usage{
 getPrice(
   feed = "CME_NymexFutures_EOD",
-  contract = "@CL0Z",
+  contract = "@CL21Z",
   from = "2020-09-01",
   iuser = "x@xyz.com",
   ipassword = "pass"
@@ -45,13 +45,13 @@ You need your own credentials with Morningstar. In examples sourced locally.
   \item CME_STLCPC_Futures
   \item CFTC_CommitmentsOfTradersCombined. Requires multiple keys. Separate them by a space e.g. "N10 06765A NYME 01".
   \item Morningstar_FX_Forwards. Requires multiple keys. Separate them by a space e.g. "USDCAD 2M".
+  \item ERCOT_LmpsByResourceNodeAndElectricalBus.
+  \item PJM_Rt_Hourly_Lmp.
 }
 }
 
 \examples{
 \dontrun{
-getPrice(feed="CME_NymexFutures_EOD",contract="@CL0Z",
-from="2019-08-26",iuser = username, ipassword = password)
 getPrice(feed="CME_NymexFutures_EOD",contract="@CL21Z",
 from="2019-08-26",iuser = username, ipassword = password)
 getPrice(feed="CME_NymexFutures_EOD_continuous",contract="CL_006_Month",
