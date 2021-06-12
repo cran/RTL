@@ -17,21 +17,18 @@
 
 #' tickers_eia
 #' @description Supports automated upload of EIA data through its API by categories.
-#' Data frame organized by Supply Demand caterogies and products.
+#' Data frame organized by Supply Demand categories and products.
 #' @format data frame
-#' @source \url{https://www.eia.gov/}
 "tickers_eia"
 
 #' eiaStocks
 #' @description EIA weekly crude, NG, ULSD and RBOB stocks.
 #' @format data frame
-#' @source \url{https://www.eia.gov}
 "eiaStocks"
 
 #' eiaStorageCap
 #' @description EIA crude storage capacity in thousand bbls.
 #' @format data frame
-#' @source \url{https://www.eia.gov/petroleum/storagecapacity/}
 "eiaStorageCap"
 
 #' cancrudeassays
@@ -68,54 +65,6 @@
 #' @description Randomized dataset of Canadian Crude monthly prices versus WTi Calendar Month Average.
 #' @format data frame
 "cancrudeprices"
-
-#' crudepipelines
-#' @description GIS data set for North American crude pipelines.
-#' @format data frame
-#' @source \url{https://www.eia.gov/maps/layer_info-m.php}
-"crudepipelines"
-
-#' refineries
-#' @description GIS data set for North American refineries.
-#' @format data frame
-#' @source \url{https://www.eia.gov/maps/layer_info-m.php}
-"refineries"
-
-#' productspipelines
-#' @description GIS data set for North American products pipelines.
-#' @format data frame
-#' @source \url{https://www.eia.gov/maps/layer_info-m.php}
-"productspipelines"
-
-#' productsterminals
-#' @description GIS data set for North American products terminals.
-#' @format data frame
-#' @source \url{https://www.eia.gov/maps/layer_info-m.php}
-"productsterminals"
-
-#' ngpipelines
-#' @description GIS data set for North American NG pipelines.
-#' @format data frame
-#' @source \url{https://www.eia.gov/maps/layer_info-m.php}
-"ngpipelines"
-
-#' ngstorage
-#' @description GIS data set for North American NG storage.
-#' @format data frame
-#' @source \url{https://www.eia.gov/maps/layer_info-m.php}
-"ngstorage"
-
-#' nghubs
-#' @description GIS data set for North American NG Trading Hubs.
-#' @format data frame
-#' @source \url{https://www.eia.gov/maps/layer_info-m.php}
-"nghubs"
-
-#' lngterminals
-#' @description GIS data set for North American LNG terminals.
-#' @format data frame
-#' @source \url{https://www.eia.gov/maps/layer_info-m.php}
-"lngterminals"
 
 #' df_fut
 #' @description Futures settlement data set.
