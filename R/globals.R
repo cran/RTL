@@ -1,4 +1,4 @@
-utils::globalVariables(c("df_fut","dflong","dfwide","expiry_table","holidaysOil","EIAkey",
+utils::globalVariables(c("dflong","dfwide","expiry_table","holidaysOil","EIAkey",
                          "a","x","df","value","series","symbol",".","price",
                          "cmdty","Date","expiry","V1","yield","maturity","contract","us.df","cf",
                          "DoW","Last.Trade","Year","key","swap","tick.prefix","Month.Letter",
@@ -11,4 +11,4 @@ utils::globalVariables(c("df_fut","dflong","dfwide","expiry_table","holidaysOil"
                          "ref.opt.inputs","ref.opt.outputs","prices","LightSweet.yield","LightSweet",
                          "HeavySour","HeavySour.yield","Element","product","max.prod","info","code",
                          "Close","fut.contract","DaysFromExp","reportDate","opt","adjusted","ret",
-                         "table.AnnualizedReturns","table.DownsideRiskRatio"))
+                         "table.AnnualizedReturns","table.DownsideRiskRatio","deliveryStartDate"))

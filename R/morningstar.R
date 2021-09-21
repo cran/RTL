@@ -60,24 +60,29 @@
 #' from="2019-08-26",iuser = username, ipassword = password)
 #' getPrice(feed = "AESO_ForecastAndActualPoolPrice",contract = "Forecast_Pool_Price",
 #' from = "2021-04-01",iuser = username, ipassword = password)
+#' getPrice(feed = "LME_MonthlyDelayed_Derived",contract = "AHD 2021-12-01 2021-12-31",
+#' from = "2021-04-01",iuser = username, ipassword = password)
 #' }
 
-getPrice <- function(feed = "CME_NymexFutures_EOD",contract = "@CL21Z",
-                     from = "2020-09-01",iuser = "x@xyz.com", ipassword = "pass") {
+getPrice <- function(feed = "CME_NymexFutures_EOD", contract = "@CL21Z",
+                     from = "2020-09-01", iuser = "x@xyz.com", ipassword = "pass") {
   #mpurl <- "https://mp.morningstarcommodity.com/lds/feeds/CME_NymexFutures_EOD/ts?Symbol=@CL9Z"
-  userpw <- paste0(iuser,":",ipassword)
+  #userpw <- paste0(iuser,":",ipassword)
   if (feed %in% c("CME_NymexFutures_EOD","CME_NymexOptions_EOD","CME_CbotFuturesEOD","CME_CmeFutures_EOD",
                   "ICE_EuroFutures","ICE_NybotCoffeeSugarCocoaFutures",
                   "CME_Comex_FuturesSettlement_EOD",
                   "LME_AskBidPrices_Delayed", "SHFE_FuturesSettlement_RT")) {
     URL = httr::modify_url(url = "https://mp.morningstarcommodity.com",path = paste0("/lds/feeds/",feed, "/ts?","Symbol=",contract,"&fromDateTime=",from))}
+  if (feed %in% c("LME_MonthlyDelayed_Derived")) {
+    URL = httr::modify_url(url = "https://mp.morningstarcommodity.com",path = paste0("/lds/feeds/",feed, "/ts?","Root=",stringr::word(contract,1,1),"&DeliveryStart=",stringr::word(contract,2,2),"&DeliveryEnd=",stringr::word(contract,3,3),"&fromDateTime=",from))
+    }
   if (feed %in% c("CME_NymexFutures_EOD_continuous","CME_CmeFutures_EOD_continuous",
                   "ICE_EuroFutures_continuous","ICE_NybotCoffeeSugarCocoaFutures_continuous",
                   "CME_Comex_FuturesSettlement_EOD_continuous","CME_CbotFuturesEOD_continuous")) {
     URL = httr::modify_url(url = "https://mp.morningstarcommodity.com",path = paste0("/lds/feeds/",feed, "/ts?","Contract=",contract,"&fromDateTime=",from))}
   if (feed %in% c("CME_STLCPC_Futures")) {URL = httr::modify_url(url = "https://mp.morningstarcommodity.com",path = paste0("/lds/feeds/",feed, "/ts?","product=",contract,"&fromDateTime=",from))}
   if (feed %in% c("CFTC_CommitmentsOfTradersCombined")) {
-    if(grepl(",",contract)) stop(paste("Use a space instead of a comma to separate contract components e.g.",gsub(","," ",contract)))
+    if (grepl(",", contract)) stop(paste("Use a space instead of a comma to separate contract components e.g.", gsub(","," ",contract)))
     URL = httr::modify_url(url = "https://mp.morningstarcommodity.com",
                            path = paste0("/lds/feeds/",feed, "/ts?",
                                          "cftc_subgroup_code=",stringr::word(contract,1,1),
@@ -87,8 +92,8 @@ getPrice <- function(feed = "CME_NymexFutures_EOD",contract = "@CL21Z",
                                          "&cols=",stringr::word(contract,5,5),
                                          "&fromDateTime=",from))}
 
-  if (feed=="Morningstar_FX_Forwards") {
-    if(grepl(",",contract)) stop(paste("Use a space instead of a comma to separate contract components e.g.",gsub(","," ",contract)))
+  if (feed == "Morningstar_FX_Forwards") {
+    if (grepl(",",contract)) stop(paste("Use a space instead of a comma to separate contract components e.g.",gsub(","," ",contract)))
     x1 = stringr::word(contract,1,1)
     x2 = stringr::word(contract,2,2)
     URL = httr::modify_url(url = "https://mp.morningstarcommodity.com",
@@ -105,7 +110,7 @@ getPrice <- function(feed = "CME_NymexFutures_EOD",contract = "@CL21Z",
   elecFeeds = "ERCOT|PJM|AESO"
   # Non electricity feeds
   if (!grepl(elecFeeds, feed) & length(es) > 0) {
-    if(length(es %>% purrr::flatten() %>% .$series %>% .$values %>% purrr::flatten()) > 0) {
+    if (length(es %>% purrr::flatten() %>% .$series %>% .$values %>% purrr::flatten()) > 0) {
       out <-
         dplyr::tibble(date = as.character(lubridate::ymd(es %>% purrr::flatten() %>% purrr::flatten() %>% .$dates)) %>% lubridate::ymd(),
                       opt = feed == "CME_NymexOptions_EOD",
@@ -122,7 +127,7 @@ getPrice <- function(feed = "CME_NymexFutures_EOD",contract = "@CL21Z",
           )}}
   # electricy feeds
   if (grepl(elecFeeds, feed) & length(es) > 0) {
-    if(length(es %>% purrr::flatten() %>% .$series %>% .$values %>% purrr::flatten()) > 0) {
+    if (length(es %>% purrr::flatten() %>% .$series %>% .$values %>% purrr::flatten()) > 0) {
       if (grepl("ERCOT", feed)) {tz <- "CST" ; x = 1}
       if (grepl("PJM", feed)) {tz <- "EST" ; x = 5}
       if (grepl("AESO", feed)) {tz <- "MST" ; x = 1}
@@ -137,6 +142,10 @@ getPrice <- function(feed = "CME_NymexFutures_EOD",contract = "@CL21Z",
             fwdyr = numeric()
           )}}
   if (length(colnames(out)) == 2) {colnames(out)[2] <- sub("@","",contract)}
+  if (feed %in% c("LME_MonthlyDelayed_Derived")) {
+    colnames(out)[2] <- gsub("-","",paste0(stringr::word(contract,1,1),substr(stringr::word(contract,2,2),1,7)))
+    }
+
   return(out)
 }
 
@@ -244,18 +253,30 @@ getIRswapCurve <- function(currency="USD",from="2019-01-01",iuser = "x@xyz.com",
 #' getCurve(feed = "Crb_Futures_Price_Volume_And_Open_Interest",contract = "BG",
 #' date = "2020-07-13",fields = c("Open, High, Low, Close"),
 #' iuser = "x@xyz.com", ipassword = "pass")
+#'
+#' getCurve(feed = "LME_ClosingPriceDelayed",contract = "AHD",
+#' date = "2021-06-25",fields = c("Last_Price"),
+#' iuser = "x@xyz.com", ipassword = "pass")
 #' }
 
 getCurve <- function(feed = "Crb_Futures_Price_Volume_And_Open_Interest",contract = "CL",date ="2020-08-10",
                      fields = c("Open, High, Low, Close"),
                      iuser = "x@xyz.com", ipassword = "pass") {
-
   URL = httr::modify_url(url = "https://mp.morningstarcommodity.com",
                          path = paste0("/lds/feeds/",feed, "/curve?root=",contract,"&cols=",gsub(" ","",fields),
                                        "&date=",date))
-  es = RCurl::getURL(url = URL, userpw = paste(iuser,ipassword,sep=":"))
-  out <- jsonlite::fromJSON(es) %>% dplyr::as_tibble()
-  es <- out$keys %>% unlist() %>% unique() %>% sort()
+  es = RCurl::getURL(url = URL, userpw = paste(iuser,ipassword,sep = ":"))
+  out <- jsonlite::fromJSON(es) %>%
+    dplyr::as_tibble() %>%
+    dplyr::arrange(deliveryStartDate)
+
+  if (grepl("LME_MonthlyDelayed_Derived",feed)) {
+    out <- out %>% dplyr::mutate(expirationDate = lubridate::rollback(as.Date(deliveryStartDate),roll_to_first = T) - 1)
+    es <- NA
+  } else {
+    es <- out$keys %>% unlist() %>% unique()
+  }
+
   out <- out %>%
     dplyr::transmute(expirationDate = as.Date(expirationDate),
                      type = col,
@@ -267,7 +288,6 @@ getCurve <- function(feed = "Crb_Futures_Price_Volume_And_Open_Interest",contrac
     dplyr::mutate(contract = paste(contract, sprintf('%0.2d', 1:nrow(out)), sep = ""),
                   code = es) %>%
     dplyr::select(contract, code, dplyr::everything())
-
   return(out)
 }
 

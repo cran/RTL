@@ -1,3 +1,33 @@
+#' spot2futConvergence
+#' @description Cash and futures dataset - demo dataset
+#' @format data frame
+#' @source {Morningstar, EIA}
+"spot2futConvergence"
+
+#' spot2futCurve
+#' @description Forward Curve - cash and futures - demo dataset
+#' @format data frame
+#' @source {Morningstar, EIA}
+"spot2futCurve"
+
+#' wtiSwap
+#' @description WTI Crude futures for swap pricing - demo dataset
+#' @format data frame
+#' @source {Morningstar}
+"wtiSwap"
+
+#' fxfwd
+#' @description Foreign Exchange Forward Rates - demo dataset
+#' @format data frame
+#' @source {Morningstar}
+"fxfwd"
+
+#' eurodollar
+#' @description Eurodollar Futures - demo dataset
+#' @format data frame
+#' @source {Morningstar}
+"eurodollar"
+
 #' planets
 #' @description Planet metrics from NASA
 #' @format data frame
@@ -65,12 +95,6 @@
 #' @description Randomized dataset of Canadian Crude monthly prices versus WTi Calendar Month Average.
 #' @format data frame
 "cancrudeprices"
-
-#' df_fut
-#' @description Futures settlement data set.
-#' @format data frame
-#' #' @source \url{https://www.morningstar.com/products/commodities-and-energy}
-"df_fut"
 
 #' dflong
 #' @description Futures settlement data set.
