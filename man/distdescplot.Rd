@@ -2,7 +2,7 @@
 % Please edit documentation in R/distdescplot.R
 \name{distdescplot}
 \alias{distdescplot}
-\title{\code{distdescplot}}
+\title{Summary of distribution properties of a timeseries}
 \usage{
 distdescplot(x = x)
 }
@@ -16,9 +16,11 @@ Multiple plots describing the distribution.
 Provides a summary of returns distribution
 }
 \examples{
-  x <- dplyr::tibble(date = seq.Date(Sys.Date()-1000, Sys.Date(),1),
-  CL01 = c(rnorm(501,0,0.02),rnorm(500,0,0.01)))
-distdescplot(x=x)
+x <- dplyr::tibble(
+  date = seq.Date(Sys.Date() - 1000, Sys.Date(), 1),
+  CL01 = c(rnorm(501, 0, 0.02), rnorm(500, 0, 0.01))
+)
+distdescplot(x = x)
 }
 \author{
 Philippe Cote

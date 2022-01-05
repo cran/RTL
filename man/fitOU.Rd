@@ -2,7 +2,7 @@
 % Please edit documentation in R/fitOU.R
 \name{fitOU}
 \alias{fitOU}
-\title{\code{fitOU}}
+\title{Fits a Ornstein–Uhlenbeck process to a dataset}
 \usage{
 fitOU(spread)
 }
@@ -16,7 +16,7 @@ List of alpha, mu and sigma estimates
 Parameter estimation for Ornstein–Uhlenbeck process
 }
 \examples{
-spread <- simOU(mu=5,theta=.5,sigma=0.2,T=5,dt=1/250)
+spread <- simOU(mu = 5, theta = .5, sigma = 0.2, T = 5, dt = 1 / 250)
 fitOU(spread)
 }
 \author{

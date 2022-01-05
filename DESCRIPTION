@@ -1,33 +1,33 @@
-Package: RTL
 Type: Package
-Title: Risk Tool Library - Trading, Risk, Analytic for Commodities
-Version: 0.1.8
-Date: 2021-09-21
-Authors@R: c(person("Philippe", "Cote", email = "pcote@ualberta.ca", role = c("aut", "cre")),person("Nima", "Safaian", email = "nima.safaian@gmail.com", role = c("aut")), person("Mikel", "Buchinski", email = "mbuchins@ualberta.ca", role = c("ctb")),person("Joe", "Rikk", email = "rikk@ualberta.ca", role = c("ctb")), person("Gabriela", "Sanchez", email = "gsanchez@ualberta.ca", role = c("ctb")), person("Usman", "Farooq", email = "ufarooq@ualberta.ca", role = c("ctb")))
-Description: Collection of functions and metadata to complement core packages
-    in Finance and Commodities, including futures expiry tables and <https://www.morningstar.com/products/commodities-and-energy>
-    API functions. See <https://github.com/risktoollib/RTL>.
+Package: RTL
+Title: Risk Tool Library - Trading, Risk, 'Analytics' for Commodities
+Version: 0.1.9
+Date: 2022-01-04
+Authors@R: 
+  c(person(given = "Philippe",
+           family = "Cote",
+           role = c("aut", "cre"),
+           email = "pcote@ualberta.ca"),
+    person(given = "Nima",
+           family = "Safaian",
+           role = "aut",
+           email = "nima.safaian@gmail.com"))
+Description: A toolkit for Commodities 'analytics', risk management and trading professionals. Includes functions for API calls to 'Morningstar Commodities' and 'Genscape'.
 Depends: R (>= 4.0)
-License: GPL (>= 3)
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 LazyDataCompression: xz
 URL: https://github.com/risktoollib/RTL
-Suggests: rgdal, Quandl, fitdistrplus, lpSolve, rugarch,
-        PerformanceAnalytics
 RoxygenNote: 7.1.2
-Imports: zoo, xts, stats, magrittr, tibble, dplyr, tidyr, ggplot2,
-        httr, stringr, purrr, lubridate, tibbletime, forecast,
-        tidyquant, readr, tsibble, feasts, fabletools, jsonlite, RCurl,
-        rlang, utils, plotly, timetk, tidyverse
+Imports: stringr, dplyr, tidyr, plotly, lubridate, xts, readr, ggplot2,
+        fabletools, feasts, httr, jsonlite, tidyquant, forecast,
+        timetk, magrittr, rlang, RCurl, purrr, zoo, tibble, tsibble
+Suggests: lpSolve, rugarch, Quandl, rgdal, PerformanceAnalytics
 NeedsCompilation: no
-Packaged: 2021-09-21 18:39:19 UTC; pcote
+Packaged: 2022-01-05 00:45:48 UTC; pcote
 Author: Philippe Cote [aut, cre],
-  Nima Safaian [aut],
-  Mikel Buchinski [ctb],
-  Joe Rikk [ctb],
-  Gabriela Sanchez [ctb],
-  Usman Farooq [ctb]
+  Nima Safaian [aut]
 Maintainer: Philippe Cote <pcote@ualberta.ca>
 Repository: CRAN
-Date/Publication: 2021-09-21 19:40:02 UTC
+Date/Publication: 2022-01-05 01:00:02 UTC

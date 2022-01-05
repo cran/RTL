@@ -2,7 +2,7 @@
 % Please edit documentation in R/chart_spreads.R
 \name{chart_spreads}
 \alias{chart_spreads}
-\title{\code{chart_spreads}}
+\title{Futures contract spreads comparison across years}
 \usage{
 chart_spreads(
   cpairs = cpairs,
@@ -42,20 +42,25 @@ chart_spreads(
 A plotly object or a dataframe
 }
 \description{
-Chart spreads in specific futures contracts for multiple years.
+Plots specific contract pairs across years with time being days from expiry.
 }
 \examples{
 \dontrun{
-cpairs <- dplyr::tibble(year = c("2014","2019","2020"),
-first = c("@HO4H","@HO9H","@HO0H"),
-second = c("@CL4J","@CL9J","@CL0J"))
-chart_spreads(cpairs = cpairs, daysFromExpiry = 200, from = "2012-01-01",
-conversion = c(42,1),feed = "CME_NymexFutures_EOD",
-iuser = "x@xyz.com", ipassword = "pass",
-title = "March/April ULSD Nymex Spreads",
-yaxis = "$ per bbl",
-output = "data")
- }
+cpairs <- dplyr::tibble(
+  year = c("2014", "2019", "2020"),
+  first = c("@HO4H", "@HO9H", "@HO0H"),
+  second = c("@CL4J", "@CL9J", "@CL0J")
+)
+chart_spreads(
+  cpairs = cpairs, daysFromExpiry = 200, from = "2012-01-01",
+  conversion = c(42, 1), feed = "CME_NymexFutures_EOD",
+  iuser = "x@xyz.com", ipassword = "pass",
+  title = "March/April ULSD Nymex Spreads",
+  yaxis = "$ per bbl",
+  output = "data"
+)
+}
+
 }
 \author{
 Philippe Cote

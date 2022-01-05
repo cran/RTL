@@ -3,10 +3,12 @@
 \docType{data}
 \name{dflong}
 \alias{dflong}
-\title{dflong}
+\title{Data for commodity prices in a long dataframe format}
 \format{
 data frame
-#' @source \url{https://www.morningstar.com/products/commodities-and-energy}
+}
+\source{
+Morningstar Commodities
 }
 \usage{
 dflong

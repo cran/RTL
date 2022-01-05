@@ -2,7 +2,7 @@
 % Please edit documentation in R/swapCOM.R
 \name{swapCOM}
 \alias{swapCOM}
-\title{\code{swapCOM}}
+\title{Commodity Calendar Month Average Swaps}
 \usage{
 swapCOM(
   futures = futs,
@@ -31,12 +31,17 @@ Commodity swap pricing from exchange settlement
 }
 \examples{
 \dontrun{
-c <- paste0("CL0",c("M","N","Q"))
-futs <-getPrices(feed="CME_NymexFutures_EOD",contracts = c,from="2019-08-26",
-iuser = username, ipassword = password)
-swapCOM(futures = futs, futuresNames=c("CL0M","CL0N"),
-pricingDates = c("2020-05-01","2020-05-30"), contract = "cmewti", exchange = "nymex")
+c <- paste0("CL0", c("M", "N", "Q"))
+futs <- getPrices(
+  feed = "CME_NymexFutures_EOD", contracts = c, from = "2019-08-26",
+  iuser = username, ipassword = password
+)
+swapCOM(
+  futures = futs, futuresNames = c("CL0M", "CL0N"),
+  pricingDates = c("2020-05-01", "2020-05-30"), contract = "cmewti", exchange = "nymex"
+)
 }
+
 }
 \author{
 Philippe Cote

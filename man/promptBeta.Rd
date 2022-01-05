@@ -2,7 +2,7 @@
 % Please edit documentation in R/promptBeta.R
 \name{promptBeta}
 \alias{promptBeta}
-\title{\code{promptBeta}}
+\title{Computes betas of futures contracts with respect to the 1st line contract}
 \usage{
 promptBeta(x = x, period = "all", betatype = "all", output = "chart")
 }
@@ -23,14 +23,16 @@ Returns betas of futures contracts versus front futures contract.
 }
 \examples{
 \dontrun{
-x <- dflong \%>\% dplyr::filter(grepl("CL",series))
-x <- x \%>\% dplyr::mutate(series = readr::parse_number(series)) \%>\% dplyr::group_by(series)
-x <- RTL::returns(df = x,retType = "abs",period.return = 1,spread = TRUE)
-x <- RTL::rolladjust(x = x,commodityname = c("cmewti"),rolltype = c("Last.Trade"))
-x <- x \%>\% dplyr::filter(!grepl("2020-04-20|2020-04-21",date))
-promptBeta(x = x,period = "all",betatype = "all",output = "chart")
-promptBeta(x = x,period = "all",betatype = "all",output = "betas")
-promptBeta(x = x,period = "100",betatype = "all",output = "betas")
+x <- dflong \%>\% dplyr::filter(grepl("CL", series))
+x <- x \%>\%
+  dplyr::mutate(series = readr::parse_number(series)) \%>\%
+  dplyr::group_by(series)
+x <- RTL::returns(df = x, retType = "abs", period.return = 1, spread = TRUE)
+x <- RTL::rolladjust(x = x, commodityname = c("cmewti"), rolltype = c("Last.Trade"))
+x <- x \%>\% dplyr::filter(!grepl("2020-04-20|2020-04-21", date))
+promptBeta(x = x, period = "all", betatype = "all", output = "chart")
+promptBeta(x = x, period = "all", betatype = "all", output = "betas")
+promptBeta(x = x, period = "100", betatype = "all", output = "betas")
 }
 }
 \author{

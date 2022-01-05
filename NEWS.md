@@ -1,3 +1,24 @@
+# RTL 0.1.9
+
+## Updates
+
++ `dfwide` retains the `NA` so as not to reduce scope where all tickers have data. 
++ `eiaStorageCap` now includes Lower 48 States Working Natural Gas Total Underground Storage Capacity. 
++ `chart_fwd_curves()` vectorized.
++ Added storage capacity to `eiaStorageCap` data set for PADD1 middle and light distillates as a proxy for NYH.
++ `tradeCycle` updated for 2022 Canadian Notice of Shipments and US Domestic crude calendar added.
++ `rolladjust()` updated with CME Canadian crude calendar cmdty == "cmecan".
++ `chart_eia_steo()` inventory imbalance subplot updated to a line fill type for better visibility. 
+
+## Bugs & Fixes
+
++ Fixed `promptBeta()` period input.
++ `getPrices()` merging with all = TRUE.
+
+## Deprecated
+
++ `stl_decomp()` has been removed.
+
 # RTL 0.1.8
 
 ## Updates and Fixes

@@ -2,7 +2,7 @@
 % Please edit documentation in R/swapIRS.R
 \name{swapIRS}
 \alias{swapIRS}
-\title{\code{swapIRS}}
+\title{Interest Rate Swap}
 \usage{
 swapIRS(
   trade.date = lubridate::today(),
@@ -48,15 +48,17 @@ swapIRS(
 List of swap price, cash flow data frame, duration.
 }
 \description{
-Commodity swap pricing from exchange settlement
+Computes the mark to market of an IRS
 }
 \examples{
 data("usSwapCurves")
-swapIRS(trade.date = as.Date("2020-01-04"), eff.date = as.Date("2020-01-06"),
-mat.date = as.Date("2022-01-06"), notional = 1000000,
-PayRec = "Rec", fixed.rate=0.05, float.curve = usSwapCurves, reset.freq=3,
-disc.curve = usSwapCurves, convention = c("act",360),
-bus.calendar = "NY", output = "all")
+swapIRS(
+  trade.date = as.Date("2020-01-04"), eff.date = as.Date("2020-01-06"),
+  mat.date = as.Date("2022-01-06"), notional = 1000000,
+  PayRec = "Rec", fixed.rate = 0.05, float.curve = usSwapCurves, reset.freq = 3,
+  disc.curve = usSwapCurves, convention = c("act", 360),
+  bus.calendar = "NY", output = "all"
+)
 }
 \author{
 Philippe Cote

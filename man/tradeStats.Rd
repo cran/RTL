@@ -2,7 +2,7 @@
 % Please edit documentation in R/tradeStats.R
 \name{tradeStats}
 \alias{tradeStats}
-\title{\code{tradeStats}}
+\title{Risk-reward statistics for quant trading}
 \usage{
 tradeStats(x, Rf = 0)
 }
@@ -18,11 +18,12 @@ List of risk/reward metrics.
 Compute list of risk reward metrics
 }
 \examples{
-library(tidyverse)
-library(tidyquant)
+library(PerformanceAnalytics)
 x <- tidyquant::tq_get("SPY") \%>\% dplyr::mutate(ret = log(adjusted / dplyr::lag(adjusted)))
-x <- x \%>\% stats::na.omit()\%>\% dplyr::select(date,ret)
-tradeStats(x = x,Rf=0)
+x <- x \%>\%
+  stats::na.omit() \%>\%
+  dplyr::select(date, ret)
+tradeStats(x = x, Rf = 0)
 }
 \author{
 Philippe Cote

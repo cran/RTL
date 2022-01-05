@@ -2,7 +2,7 @@
 % Please edit documentation in R/returns.R
 \name{returns}
 \alias{returns}
-\title{\code{returns}}
+\title{Compute absolute, relative or log returns.}
 \usage{
 returns(df = dflong, retType = "abs", period.return = 1, spread = FALSE)
 }
@@ -22,8 +22,8 @@ A dataframe object of returns.
 Computes periodic returns from a dataframe ordered by date
 }
 \examples{
-x <- dflong \%>\% dplyr::filter(grepl("CL01",series))
-returns(df = x, retType = "abs",period.return = 1,spread = TRUE)
+x <- dflong \%>\% dplyr::filter(grepl("CL01", series))
+returns(df = x, retType = "abs", period.return = 1, spread = TRUE)
 }
 \author{
 Philippe Cote
