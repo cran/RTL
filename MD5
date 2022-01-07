@@ -1,7 +1,7 @@
-b5f644adbee8602d906a9db3d924620e *DESCRIPTION
+334716e9930951b46dd8fd14a6eb5be1 *DESCRIPTION
 2d7da6a202a299908f446c0d7d572132 *LICENSE
 a31dd9d51ca855ce17631b930ba16145 *NAMESPACE
-bdc60747ac1caa48f701d707ed5ea898 *NEWS.md
+03ba0d01df90cf7a3f186d8553df91e4 *NEWS.md
 2d19ec467e97bda2847d360fc46da872 *R/CRReuro.R
 09b9ebfde5d222aac7731bca3e269907 *R/bond.R
 ce842511f1a2d5773ed9acdda879eba5 *R/chart_PerfSummary.R
@@ -42,14 +42,14 @@ cbbd3826dc5bf29e4ebd6cdb3ce3f55a *data/cancrudeprices.rda
 9a65380a14dc5894b36648235be5a562 *data/crudeassaysBP.rda
 f64c8f5a10743e448aaac688bed02729 *data/crudeassaysXOM.rda
 be2b90220588172862f8a6168880709c *data/crudes.rda
-2049dcb2bfe64c9e48b6a25f9fb420c6 *data/dflong.rda
-f38e3a13f6760b4237a8712bceb39d81 *data/dfwide.rda
-1dcbc4b7574a1260c8b769d8be8c8ca9 *data/eiaStocks.rda
+c1ecb461285e8c00b2c7025856be01a1 *data/dflong.rda
+f838572b22c65bab433e2bbd2d95e15e *data/dfwide.rda
+e3e6426cae9d413f63b5be8d8b286525 *data/eiaStocks.rda
 af218c21145e7fc91579db36d54fe14a *data/eiaStorageCap.rda
 80eab58d1a538177c67eaf28ef39c1a5 *data/eurodollar.rda
 7c266fc1455ce70dcbfe43e8bdb52c4d *data/expiry_table.rda
 c809066d505cdff87325bbf6f1df21be *data/fizdiffs.rda
-32dedc88e6c0450d3780efbafadf025d *data/fxfwd.rda
+ecec9b37392be0b4a7a0c78e2ee73270 *data/fxfwd.rda
 83d15fb4cd9d5a703a3d77edd68db465 *data/holidaysOil.rda
 a9afce37925e696657e4f4bf66cd90eb *data/planets.rda
 a772778bdc1be879bb07bd4805f3821a *data/ref.opt.inputs.rda
@@ -57,7 +57,7 @@ a772778bdc1be879bb07bd4805f3821a *data/ref.opt.inputs.rda
 65ce86f21fd5026ef7b7e573b8f24bf6 *data/spot2futConvergence.rda
 0f2c7062fdc5b08f68317b5702896a6f *data/spot2futCurve.rda
 4d7a4517af7b6bcc985cdd853beab0b5 *data/tickers_eia.rda
-30d693f722ea4ed5e748b8054ba65fdc *data/tradeCycle.rda
+addc736c24176697d0de25fb1d01c8b5 *data/tradeCycle.rda
 e6d6b4e5dc42708f7448629055ed4709 *data/tradeprocess.rda
 b77cc78f014d1a5eb1cd9c2c520127e0 *data/usSwapCurves.rda
 aa8e27731f0b9a2d263bff23ce0f0315 *data/usSwapCurvesPar.rda

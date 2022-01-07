@@ -1,8 +1,8 @@
 Type: Package
 Package: RTL
 Title: Risk Tool Library - Trading, Risk, 'Analytics' for Commodities
-Version: 0.1.9
-Date: 2022-01-04
+Version: 0.1.91
+Date: 2022-01-06
 Authors@R: 
   c(person(given = "Philippe",
            family = "Cote",
@@ -21,13 +21,13 @@ LazyDataCompression: xz
 URL: https://github.com/risktoollib/RTL
 RoxygenNote: 7.1.2
 Imports: stringr, dplyr, tidyr, plotly, lubridate, xts, readr, ggplot2,
-        fabletools, feasts, httr, jsonlite, tidyquant, forecast,
-        timetk, magrittr, rlang, RCurl, purrr, zoo, tibble, tsibble
+        fabletools, feasts, httr, jsonlite, tidyquant, timetk,
+        magrittr, rlang, RCurl, purrr, zoo, tibble, tsibble
 Suggests: lpSolve, rugarch, Quandl, rgdal, PerformanceAnalytics
 NeedsCompilation: no
-Packaged: 2022-01-05 00:45:48 UTC; pcote
+Packaged: 2022-01-06 20:25:33 UTC; pcote
 Author: Philippe Cote [aut, cre],
   Nima Safaian [aut]
 Maintainer: Philippe Cote <pcote@ualberta.ca>
 Repository: CRAN
-Date/Publication: 2022-01-05 01:00:02 UTC
+Date/Publication: 2022-01-07 12:12:51 UTC

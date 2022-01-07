@@ -1,3 +1,12 @@
+# RTL 0.1.91
+
+## Updates
+
+
+## Bugs & Fixes
+
++ Fixed `tradeCycle` dates for Canadian Crude.
+
 # RTL 0.1.9
 
 ## Updates
