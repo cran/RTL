@@ -1,3 +1,31 @@
+# RTL 1.1.0
+
+## New
+
++ `tradeHubs` contains GIS coordinates for major crude oil trading hubs in North America.
++ `tsQuotes` dataset for use with `RQuantLib::DiscountCurve()`.
++ `simOUt()` implements `simOU()` with a mean reversion level as a function of time. 
+
+## Enhancement
+
++ `simGBM()` vectorized.
++ `simOU()`, `simOUt()` and `simOUJ()` implemented in `Rcpp` - see ./src/rcpp*.cpp
++ Added Mont Belvieu and TMX Burnaby to `tradeHubs`.
+
+## Bugs & Fixes
+
++ Remove dependencies to `tidyquant::tq_get()`.
++ `chart_zscore()` time axis fixed.
+
+## Remove
+
++ 'ir_df_us()' removed as it uses `quandl` for interest rates. Use `RTL::ir_df_us` data set instead.
+
+## Updates
+
++ `expiry_table` updated and now includes LTH and HG CME contracts.
++ Removed `usSwapIR` and `getIRswapCurve()` as data is no longer available after discontinuation of LIBOR fixes..
+
 # RTL 1.0.0
 
 ## Bugs & Fixes

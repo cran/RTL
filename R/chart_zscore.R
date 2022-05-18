@@ -34,6 +34,8 @@
 #' chart_zscore(df = df, title = " ", per = "yearweek", output = "seasonal", chart = "seasons")
 #' }
 chart_zscore <- function(df = df, title = "NG Storage Z Score", per = "yearweek", output = "zscore", chart = "seasons") {
+  if (!requireNamespace("feasts", quietly = TRUE)) {stop("Package \"feasts\" needed for this function to work. Please install it.", call. = FALSE)}
+  if (!requireNamespace("fabletools", quietly = TRUE)) {stop("Package \"fabletools\" needed for this function to work. Please install it.", call. = FALSE)}
   if (nchar(title) == 0) {
     title <- unique(df$series)
   }
@@ -159,16 +161,15 @@ chart_zscore <- function(df = df, title = "NG Storage Z Score", per = "yearweek"
 
   if (output == "zscore") {
     pal <- c("red", "orange", "green", "orange", "red")
-    max.d <- as.Date(max(df$freq))
-    min.d <- as.Date(min(df$freq))
 
     x <- x %>%
-      dplyr::filter(freq >= min(freq)) %>%
-      plotly::plot_ly(x = ~freq, y = ~z.score, color = ~z.score, colors = pal) %>%
+      dplyr::mutate(date = as.Date(freq)) %>%
+      #dplyr::filter(date > ) %>%
+      plotly::plot_ly(x = ~date, y = ~z.score, color = ~z.score, colors = pal) %>%
       plotly::add_bars() %>%
       plotly::layout(
         title = list(text = title, x = 0),
-        xaxis = list(title = "", range = c(min.d, max.d)),
+        xaxis = list(title = "", range = c(Sys.Date() - months(120), Sys.Date())),
         yaxis = list(title = "Z Score of Seasonally-Adjusted Residuals", range = c(3, -3), separators = ".,", tickformat = ".2f")
       )
   }

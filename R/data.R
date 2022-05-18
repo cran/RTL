@@ -1,3 +1,9 @@
+#' Sample SPY ETF data set
+#' @description Stock price and returns for SPY
+#' @format data frame
+#' @source {Yahoo Finance}
+"spy"
+
 #' Data for spot to futures convergence - historical data
 #' @description Cash and futures
 #' @format data frame
@@ -108,18 +114,6 @@
 #' @source Morningstar Commodities
 "dfwide"
 
-#' Data for bootstrapping US interest rate curve
-#' @description USD Interest Rate Swap Curve for RQuantlib bootstrapping. See usSwapIRdef for sources and tickers.
-#' @format data frame
-#' #' @source Morningstar and FRED
-"usSwapIR"
-
-#' Metadata to extract US interest rate curve data
-#' @description USD Interest Rate Swap Curve definitions with sources and tickers
-#' @format data frame
-#' #' @source Morningstar and FRED
-"usSwapIRdef"
-
 #' Data for US interest rate discounting using zero rates curve.
 #' @description USD IR Discount, Forward and Zero curves from RQuantlib::DiscountCurve
 #' @format List
@@ -131,10 +125,20 @@
 #' @format data frame
 "usSwapCurvesPar"
 
+#' Interest Rate Curve Data for RQuantlib .
+#' @description USD IR curve input for RQuantlib::DiscountCurve
+#' @format data frame
+"tsQuotes"
+
 #' Data for Canadian and US physical crude trading calendars
 #' @description Crude Trading Trade Cycles
 #' @format data frame
 "tradeCycle"
+
+#' GIS Data for Crude Oil Trading Hubs
+#' @description Trading Hubs
+#' @format data frame
+"tradeHubs"
 
 #' Randomized data of physical crude differentials
 #' @description Randomized data set for education purpose of selected physical crude differentials to WTI.

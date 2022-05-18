@@ -7,16 +7,9 @@
 #' @author Philippe Cote
 #' @examples
 #' library(PerformanceAnalytics)
-#' x <- tidyquant::tq_get("SPY") %>% dplyr::mutate(ret = log(adjusted / dplyr::lag(adjusted)))
-#' x <- x %>%
-#'   stats::na.omit() %>%
-#'   dplyr::select(date, ret)
-#' tradeStats(x = x, Rf = 0)
+#' tradeStats(x = RTL::spy, Rf = 0)
 tradeStats <- function(x, Rf = 0) {
-  # if (!requireNamespace("PerformanceAnalytics", quietly = TRUE)) {
-  #   stop("Package \"PerformanceAnalytics\" needed for this function to work. Please install it.",
-  #        call. = FALSE)
-  # }
+  if (!requireNamespace("tidyquant", quietly = TRUE)) {stop("Package \"tidyquant\" needed for this function to work. Please install it.", call. = FALSE)}
   x <- x %>% stats::na.omit(x)
   if (class(x)[1] %in% c("xts", "zoo")) {
     x <- timetk::tk_tbl(x, rename_index = "date")
