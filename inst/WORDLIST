@@ -47,6 +47,7 @@ LME
 LTH
 Lmp
 LmpsByResourceNodeAndElectricalBus
+Markowitz
 Morningstar
 Morninstar
 NG
@@ -127,8 +128,8 @@ nd
 nghubs
 ngpipelines
 ngstorage
+nsims
 numDaysFut
-numble
 nymex
 opendata
 parms
@@ -144,6 +145,8 @@ rcpp
 resid
 resids
 risktools
+sds
+simMultivariates
 src
 stl
 summarised
