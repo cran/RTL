@@ -1,8 +1,60 @@
+#' futuresMonths
+#' @description Exchange-traded contract month codes.
+#' @format data frame
+"futuresMonths"
+
+#' futuresSpecs
+#' @description Sample futures specifications for NYMEX crude oil.
+#' @format data frame
+"futuresSpecs"
+
+#' steo
+#' @description Short Term Energy Outlook from the EIA.
+#' @format plotly object
+#' @source {eia}
+"steo"
+
+#' CLc1
+#' @description Historical CL 1st Contract OHLC set for algo trading example.
+#' @format data frame
+#' @source {CME}
+"CLc1"
+
+#' CLc2
+#' @description Historical CL 2nd Contract Close adjusted using ohlc object.
+#' @format data frame
+#' @source {CME}
+"CLc2"
+
+#' CLc1c2
+#' @description Historical CL 1st vs 2nd Contract spread.
+#' @format data frame
+#' @source {CME}
+"CLc1c2"
+
+#' ohlc
+#' @description OHLC profile using historical CL 1st Contract OHLC
+#' @format data frame
+#' @source {CME}
+"ohlc"
+
 #' Sample SPY ETF data set
 #' @description Stock price and returns for SPY
 #' @format data frame
 #' @source {Yahoo Finance}
 "spy"
+
+#' Sample USO ETF data set
+#' @description Stock price and returns for US Crude Oil ETF
+#' @format data frame
+#' @source {Yahoo Finance}
+"uso"
+
+#' Sample RBC stock price data set
+#' @description Adjusted RBC stock price on NYSE with dividend yield.
+#' @format data frame
+#' @source {Yahoo Finance}
+"ry"
 
 #' Data for spot to futures convergence - historical data
 #' @description Cash and futures
@@ -70,16 +122,9 @@
 #' Data for Canadian crude assays reported by Crude Monitor
 #' @description Data set with historical Canadian Crude Assays.
 #' @format data frame
-#' @source <https://crudemonitor.ca/>
+#' @source <https://beta.crudemonitor.ca/>
 #' @import tsibble
 "cancrudeassays"
-
-#' Summarized data for Canadian crude assays
-#' @description Data set with historical Canadian Crude Assays Statistics.
-#' @format data frame
-#' @source <https://crudemonitor.ca/>
-#' @import tsibble
-"cancrudeassayssum"
 
 #' Data for crude assays of 50+ types of crude oil.
 #' @description Crude oil qualities.

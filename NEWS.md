@@ -1,3 +1,26 @@
+# RTL 1.3.0
+
+## New
+
++ New functions for algorithmic trading at the experimental stage.
+
+  + `futuresMonths` data set for futures contract month codes.
+  + `futuresSpecs` data set for futures contract specifications example.
+  + `tradeStrategySMA()` is an example of a Moving Average crossover strategy.
+  + `tradeStrategyDY()` is an example of a dividend yield based strategy. The example is based on the `ry` data set for Royal Bank of Canada shares on NYSE. 
+  
+## Enhancement
+
++ `eia2tidy()` upgraded to version 2 EIA API.
++ `simMultivariates()` and `efficientFrontier()` correlation method moved to "kendall".
++ `simGBM()` output with added variable `t` for time and performance improved.
+
+## Bugs & Fixes
+
+## Remove
+
++ `cancrudeassayssum` removed and replaced by existing `cancrudeassays`.
+
 # RTL 1.2.0
 
 ## New
@@ -6,18 +29,9 @@
 + `efficientFrontier()` generates Markowitz mean-variance portfolios for commodities assets i.e. risk and reward not in percentages. 
 + `simOU()` augmented with an extra parameter `epsilon` in case your simulation is part of a multivariate simulation.
 
-## Enhancement
-
-
 ## Bugs & Fixes
 
 + UTF characters in `crudeassaysBP`.
-
-## Remove
-
-
-## Updates
-
 
 # RTL 1.1.0
 

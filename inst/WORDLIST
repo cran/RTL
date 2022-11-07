@@ -9,6 +9,7 @@ Belvieu
 BreakEven
 Burnaby
 CFTC
+CLc
 CMA
 CMD
 CME
@@ -68,6 +69,7 @@ Ornstein
 PADD
 PJM
 POSIXct
+RBC
 RBOB
 RQuantlib
 SHFE
@@ -86,6 +88,7 @@ WCB
 WCW
 WIP
 WTI
+algo
 analytics
 annualised
 annum
@@ -108,6 +111,8 @@ expiries
 fGarch
 fOptions
 funtion
+futuresMonths
+futuresSpecs
 garch
 genscape
 getCurve
@@ -121,6 +126,7 @@ holidaysOil
 https
 ir
 kbs
+kendall
 lngterminals
 metacran
 mogas
@@ -131,6 +137,7 @@ ngstorage
 nsims
 numDaysFut
 nymex
+ohlc
 opendata
 parms
 php
@@ -148,12 +155,14 @@ risktools
 sds
 simMultivariates
 src
+steo
 stl
 summarised
 tibble
 timeseries
 unajusted
 usSwapCurves
+uso
 vectorized
 volatilities
 www

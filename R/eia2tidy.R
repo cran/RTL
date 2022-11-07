@@ -20,41 +20,35 @@
 #'   dplyr::mutate(key = "EIAkey") %>%
 #'   dplyr::mutate(df = purrr::pmap(list(ticker, key, name), .f = RTL::eia2tidy)) %>%
 #'   dplyr::select(df) %>%
-#'   tidyr::unnest(df)
+#'   tidyr::unnest(df) %>%
+#'   tidyr::pivot_longer(-date, names_to = "series", values_to = "value") %>%
+#'   tidyr::drop_na() %>%
+#'   tidyr::pivot_wider(names_from = "series", values_from = "value")
 #' }
 eia2tidy <- function(ticker, key, name = " ") {
+  message("if using with multiple tickers check the revised example. Code changed after the EIA API migrated to v2.")
+  period <- NULL
   if (nchar(name) == 1) {
     name <- ticker
   }
-  url <- paste0("https://api.eia.gov/series/?api_key=", key, "&series_id=", ticker, "&out=json")
+  url <- paste0("https://api.eia.gov/v2/seriesid/",ticker,"?&api_key=",key)
   x <- url %>% httr::GET()
+  if (x$status_code == "404") {stop(print("http 404 :: Ticker not found."))}
+  if (x$status_code == "503") {stop(print("http 503 response :: the EIA server is temporarily unavailable. Try later."))}
   x <- jsonlite::fromJSON(httr::content(x, "text", encoding = "UTF-8"))
-  # promises::promise(~print(x$data$error)) %>%
-  #   promises::then()
-  # x %>% promises::promise()
-  out <- x$series$data[[1]] %>% dplyr::as_tibble(.name_repair = ~ c("date", "value"))
+  #out <- x$response$data %>% dplyr::as_tibble() %>% dplyr::transmute(date = period, value) %>% dplyr::rename({{name}} := value)
+  out <- x$response$data %>% dplyr::as_tibble() %>%
+    dplyr::select(date = period,tidyselect::where(is.numeric)) %>%
+    dplyr::mutate(dplyr::across(tidyselect::where(is.numeric),as.double))
+  if (ncol(out) > 2) {out <- out %>% dplyr::select(date,dplyr::last(names(.)))}
+  names(out)[ncol(out)] <- name
+  freq <- x$response$frequency
+  tmp <- out$date
+  if (freq == "monthly") {out$date <- as.Date(paste(substr(tmp, 1, 4), substr(tmp, 6, 7), "01", sep = "-"), format = "%Y-%m-%d")} # working PET.MCRFPTX2.M
+  if (freq == "annual") {out$date <- as.Date(paste0(tmp, "-01-01"), format = "%Y-%m-%d")} # working PET.MCRFPTX2.A
+  if (freq == "quarterly") {out$date <- zoo::as.Date(zoo::as.yearqtr(tmp, format = "%Y-Q%q"), frac = 1)} # ELEC.PLANT.CONS_EG_BTU.2522-ALL-ALL.Q
+  if (freq %in% c("daily","weekly")) {out$date <- as.Date(tmp, format = "%Y-%m-%d")} # working PET.WCREXUS2.W
+  if (freq == "hourly") {out$date <- lubridate::parse_date_time(tmp, c("'%Y%m%d%h"))}
 
-  if (nchar(out$date)[1] == 12) {
-    out <- out %>%
-      dplyr::mutate(
-        series = name,
-        date = lubridate::parse_date_time(date, c("'%Y%m%d%h")),
-        value = as.numeric(value)
-      ) %>%
-      dplyr::select(series, date, value)
-  } else {
-    out <- out %>%
-      dplyr::mutate(
-        series = name,
-        date = dplyr::case_when(
-          nchar(date) == 4 ~ as.Date(paste0(date, "-01-01"), format = "%Y-%m-%d"),
-          grepl("Q", date) ~ zoo::as.Date(zoo::as.yearqtr(date, format = "%YQ%q"), frac = 1),
-          nchar(date) == 6 ~ as.Date(paste(substr(date, 1, 4), substr(date, 5, 6), "01", sep = "-"), format = "%Y-%m-%d"),
-          nchar(date) == 8 ~ as.Date(date, format = "%Y%m%d")
-        ),
-        value = as.numeric(value)
-      ) %>%
-      dplyr::select(series, date, value)
-  }
   return(out)
 }
