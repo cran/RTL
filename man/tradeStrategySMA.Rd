@@ -2,9 +2,9 @@
 % Please edit documentation in R/tradeStrategySMA.R
 \name{tradeStrategySMA}
 \alias{tradeStrategySMA}
-\title{Sample Quantitative Trading strategy}
+\title{Sample quantitative trading strategy}
 \usage{
-tradeStrategySMA(data = RTL::uso, par1value = 50, par2value = 200)
+tradeStrategySMA(data = RTL::stocks$uso, par1value = 50, par2value = 200)
 }
 \arguments{
 \item{data}{Dataframe of OHLC data e.g. RTL::uso}
@@ -20,7 +20,7 @@ Dataframe with indicators, signals, trades and profit and loss.
 Moving average crossover strategy
 }
 \examples{
-tradeStrategySMA(data = RTL::uso, par1value = 50, par2value = 200)
+tradeStrategySMA(data = RTL::stocks$uso, par1value = 50, par2value = 200)
 }
 \author{
 Philippe Cote

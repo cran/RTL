@@ -1,4 +1,4 @@
-#' Sample Quantitative Trading strategy
+#' Sample quantitative trading strategy
 #' @description Moving average crossover strategy
 #' @param data Dataframe of OHLC data e.g. RTL::uso
 #' @param par1value Value of first parameter e.g. short MA
@@ -7,8 +7,8 @@
 #' @export tradeStrategySMA
 #' @author Philippe Cote
 #' @examples
-#' tradeStrategySMA(data = RTL::uso, par1value = 50, par2value = 200)
-tradeStrategySMA <- function(data = RTL::uso,
+#' tradeStrategySMA(data = RTL::stocks$uso, par1value = 50, par2value = 200)
+tradeStrategySMA <- function(data = RTL::stocks$uso,
                      par1value = 50,
                      par2value = 200) {
   Open <- trade <- pos <- retOpCl <- retClCl <- retClCl <- ret_new <- ret_exist <- ret_others <- NULL

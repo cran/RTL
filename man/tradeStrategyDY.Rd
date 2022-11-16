@@ -2,9 +2,9 @@
 % Please edit documentation in R/tradeStrategyDY.R
 \name{tradeStrategyDY}
 \alias{tradeStrategyDY}
-\title{Sample Quantitative Trading strategy}
+\title{Sample quantitative trading strategy}
 \usage{
-tradeStrategyDY(data = RTL::uso, par1value = 50, par2value = 200)
+tradeStrategyDY(data, par1value = 50, par2value = 200)
 }
 \arguments{
 \item{data}{Dataframe of OHLC data e.g. RTL::uso}
@@ -20,7 +20,7 @@ Dataframe with indicators, signals, trades and profit and loss.
 Based on dividend yield
 }
 \examples{
-tradeStrategyDY(data = RTL::uso, par1value = 50, par2value = 200)
+tradeStrategyDY(data = RTL::stocks$ry, par1value = 50, par2value = 200)
 }
 \author{
 Philippe Cote
