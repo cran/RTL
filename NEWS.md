@@ -1,3 +1,22 @@
+# RTL 1.3.2
+
+Consolidated many data sets into `list` types.
+
+## New
+
++ `getBoC()` to access the Bank of Canada Valet API.
+
+## Enhancement
+
+## Bugs & Fixes
+
++ `chart_eia_sd()` fixed for new EIA API.
+
+## Remove
+
+
+
+
 # RTL 1.3.1
 
 Consolidated many data sets into `list` types.

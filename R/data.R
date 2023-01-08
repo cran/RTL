@@ -46,9 +46,9 @@
 "wtiSwap"
 
 #' dataset: USDCAD FX forward rates
-#' @description USDCAD 1-year and 5-year forward points
-#' @format data frame
-#' @source {Morningstar}
+#' @description USDCAD historicals and forward curve
+#' @format list
+#' @source {Morningstar and https://ca.investing.com/rates-bonds/forward-rates}
 "fxfwd"
 
 #' dataset: Eurodollar futures contracts
