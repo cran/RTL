@@ -5,10 +5,10 @@
 #' Beware that most seasonal charts in industry e.g. (NG Storage)
 #' is not de-trended so results once you apply an STL decomposition
 #' will vary from the unajusted seasonal plot.
-#' @param df Long data frame with columns series, date and value
-#' @param title Default is a blank space returning the unique value in df$series.
+#' @param df Long data frame with columns series, date and value. `tibble`
+#' @param title Default is a blank space returning the unique value in df$series. `character`
 #' @param per
-#' Frequency of seasonality "yearweek" (DEFAULT). "yearmonth", "yearquarter"
+#' Frequency of seasonality "yearweek" (DEFAULT). "yearmonth", "yearquarter" `character`
 #' @param output
 #' "stl" for STL decomposition chart,
 #' "stats" for STL fitted statistics.
@@ -18,7 +18,7 @@
 #' @param chart
 #' "seasons" for feasts::gg_season() (DEFAULT)
 #' "series" for feasts::gg_subseries()
-#' @return Time series of STL decomposition residuals Z-Scores, or
+#' @returns Time series of STL decomposition residuals Z-Scores, or
 #' standard seasonal chart with feast package.
 #' @importFrom tsibble as_tsibble index_by group_by_key
 #' @export chart_zscore
@@ -40,10 +40,10 @@ chart_zscore <- function(df = df, title = "NG Storage Z Score", per = "yearweek"
     title <- unique(df$series)
   }
   if (!output %in% c("zscore", "seasonal", "stats", "stl", "res")) {
-    stop(print("Incorrect output parameter"))
+    stop("Incorrect output parameter")
   }
   if (!per %in% c("yearweek", "yearmonth", "yearquarter")) {
-    stop(print("Incorrect period parameter"))
+    stop("Incorrect period parameter")
   }
   if (per %in% c("yearweek", "yearquarter")) {
     s <- 7
