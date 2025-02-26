@@ -1,3 +1,19 @@
+# RTL 1.3.7
+
+## Enhancement
++ `spreadOption` function added for spread options on European option using Kirk's approximation.
++ `barrierSpreadPrice` function added for barrier spread options.
+
+## Bugs & Fixes
+
+# RTL 1.3.6
+
+## Enhancement
++ `getPrice` form Morningstar feed = `CME_NymexOptionsFinal_EOD`
+
+## Bugs & Fixes
++ `tradeCycle` and `expiry_table` updated.
+
 # RTL 1.3.5
 
 ## Enhancement
