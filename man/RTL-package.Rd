@@ -6,7 +6,7 @@
 \alias{RTL-package}
 \title{RTL: Risk Tool Library - Trading, Risk, Analytics for Commodities}
 \description{
-A toolkit for Commodities 'analytics', risk management and trading professionals. Includes functions for API calls to \url{https://commodities.morningstar.com/#/}, \url{https://developer.genscape.com/}, and \url{https://www.bankofcanada.ca/valet/docs}.
+A toolkit for Commodities 'analytics', risk management and trading professionals. Includes functions for API calls to \url{https://www.zema.global/platforms/zema-marketplace}, \url{https://developer.genscape.com/}, and \url{https://www.bankofcanada.ca/valet/docs}.
 }
 \seealso{
 Useful links:
@@ -21,6 +21,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Philippe Cote \email{pcote@ualberta.ca}
   \item Nima Safaian \email{nima.safaian@gmail.com}
 }
 
